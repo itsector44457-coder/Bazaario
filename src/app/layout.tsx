@@ -16,11 +16,6 @@ const geistMono = Geist_Mono({
 export const metadata: Metadata = {
   title: "Bazaario – Hyperlocal Marketplace",
   description: "Shop from local stores near you. Fast delivery, real-time tracking.",
-  icons: {
-    icon: "/Images/Modern Blue Shopping Bag B Logo.png",
-    shortcut: "/Images/Modern Blue Shopping Bag B Logo.png",
-    apple: "/Images/Modern Blue Shopping Bag B Logo.png",
-  },
 };
 
 export default function RootLayout({ children }: LayoutProps<"/">) {
