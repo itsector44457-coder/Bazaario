@@ -1,8 +1,16 @@
-'use client';
+import { Suspense } from 'react';
+import ProductDetailClientPage from './ProductDetailClientPage';
 
-import ProductDetailPage from '../page';
+export const metadata = {
+  title: 'Product Details',
+  description:
+    'View product details, reviews, and add to cart on Bazaario hyperlocal marketplace.',
+};
 
 export default function ProductDynamicDetailPage() {
-  return <ProductDetailPage />;
+  return (
+    <Suspense>
+      <ProductDetailClientPage />
+    </Suspense>
+  );
 }
-

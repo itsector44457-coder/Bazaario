@@ -1,11 +1,16 @@
-import RentalProductDetailView from '@/components/rental/RentalProductDetailView';
+import { Suspense } from 'react';
+import RentalDetailClientPage from './RentalDetailClientPage';
 
 export const metadata = {
-  title: 'Axial Air Mover Equipment Hire - Bazaario Rental',
-  description: 'Rent Axial Air Mover with flexible duration rates and technician support.',
+  title: 'Rent Products Near You',
+  description:
+    'Rent electronics, equipment, furniture and more from local stores near you on Bazaario.',
 };
 
 export default function RentalDetailPage() {
-  return <RentalProductDetailView />;
+  return (
+    <Suspense>
+      <RentalDetailClientPage />
+    </Suspense>
+  );
 }
-

@@ -14,9 +14,41 @@ import Footer from '@/components/footer/Footer';
 import CartDrawer, { CartDrawerItem } from '@/components/modals/CartDrawer';
 import OrdersModal from '@/components/modals/OrdersModal';
 import SellerModal from '@/components/modals/SellerModal';
+import JsonLd from '@/components/seo/JsonLd';
 import { Product } from '@/types';
 import Image from 'next/image';
 import { useRouter } from 'next/navigation';
+
+const ORGANIZATION_SCHEMA = {
+  '@context': 'https://schema.org',
+  '@type': 'Organization',
+  name: 'Bazaario',
+  url: 'https://bazaario.com',
+  logo: 'https://bazaario.com/Images/logo-cropped.png',
+  description:
+    "Mumbai's hyperlocal marketplace — shop from local stores near you with fast delivery and real-time tracking.",
+  sameAs: ['https://twitter.com/bazaario'],
+  contactPoint: {
+    '@type': 'ContactPoint',
+    contactType: 'customer support',
+    availableLanguage: ['English', 'Hindi'],
+  },
+};
+
+const WEBSITE_SCHEMA = {
+  '@context': 'https://schema.org',
+  '@type': 'WebSite',
+  name: 'Bazaario',
+  url: 'https://bazaario.com',
+  potentialAction: {
+    '@type': 'SearchAction',
+    target: {
+      '@type': 'EntryPoint',
+      urlTemplate: 'https://bazaario.com/search?q={search_term_string}',
+    },
+    'query-input': 'required name=search_term_string',
+  },
+};
 
 export default function HomePage() {
   const router = useRouter();
@@ -96,6 +128,9 @@ export default function HomePage() {
 
   return (
     <div className="min-h-screen bg-[#f8fafc] flex flex-col font-sans text-slate-900 antialiased">
+      {/* Structured Data */}
+      <JsonLd data={ORGANIZATION_SCHEMA} />
+      <JsonLd data={WEBSITE_SCHEMA} />
       {/* 1. Navbar & Category Bar */}
       <Navbar
         cartCount={totalCartCount}
@@ -198,7 +233,7 @@ export default function HomePage() {
                   seller: deal.storeName,
                 });
               }}
-              onSeeAll={() => alert('Viewing all daily deals')}
+              onSeeAll={() => router.push('/deals')}
             />
 
             {/* Marketplace Showcase — Premium Interactive Section */}

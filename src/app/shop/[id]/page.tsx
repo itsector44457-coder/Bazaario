@@ -1,8 +1,16 @@
-'use client';
+import { Suspense } from 'react';
+import ShopProfileClientPage from './ShopProfileClientPage';
 
-import ShopProfilePage from '../page';
+export const metadata = {
+  title: 'Shop Profile',
+  description:
+    'Browse products, reviews and offers from this local store near you on Bazaario.',
+};
 
 export default function ShopDynamicProfilePage() {
-  return <ShopProfilePage />;
+  return (
+    <Suspense>
+      <ShopProfileClientPage />
+    </Suspense>
+  );
 }
-
